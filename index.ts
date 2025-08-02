@@ -16,14 +16,14 @@ function findMaxAverage(nums: number[], k: number): number {
     let windowSum: number = 0;
 
     for (let i = 0; i < k; i++) {
-        windowSum += nums[i];
+        windowSum += nums[i]!;
     }
 
     let maxSum: number = windowSum;
 
     // slide the window
     for (let i = k; i < nums.length; i++) {
-        windowSum += windowSum - nums[i - k] + nums[i];
+        windowSum = windowSum - nums[i - k]! + nums[i]!;
         maxSum = Math.max(maxSum, windowSum);
     }
 
