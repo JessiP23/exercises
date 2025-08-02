@@ -6,3 +6,8 @@
 
 // The goal here is to achieve this while maximizing the length of the substring. A substring could range from containing a single character up to the length of the entire string, if k is sufficiently large to cover all distinct characters in the string s.
 
+function longestSubstring(s: string, k: number): number {
+    // contiguous
+    // k = 2 != "aabbc" (3 unique characters) => 2 != 3
+    // guarantee 1 character to max s.length
+}
