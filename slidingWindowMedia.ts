@@ -1,16 +1,31 @@
-// collect what we have
-// window moving to the right
-// calculate the media for that current window,
-// add the median value into the final array
-// consider using a dictionary
-// k is the number of items in the sliding window
-
-// find the media starting from a set of numbers.
-
 function medianSlidingWindow(nums: number[], k: number): number[] {
-    // constraints: k !> nums.length
+    let finalMedianValues: number[] = [];
+    let result: number[] = [];
     
-    // calculate the sliding window
-    for(let i = 0; )
-    
-};
+    for(let rightSideOfWindow = 0; rightSideOfWindow < nums.length; rightSideOfWindow++) {
+        let currentValue = nums[rightSideOfWindow]!;
+        finalMedianValues.push(currentValue);
+
+        while (finalMedianValues.length > k) {
+            finalMedianValues.shift();
+        }
+
+        if (finalMedianValues.length == k) {
+            let medianValue = calculateMedianValue(finalMedianValues);
+            result.push(medianValue);
+        }
+    }
+
+    return result;
+}
+
+function calculateMedianValue(nums: number[]): number {
+    const sortedNums = [...nums].sort((a, b) => a - b);
+
+    if (sortedNums.length % 2 == 1) {
+        return sortedNums[Math.floor(sortedNums.length / 2)]!;
+    }
+    return (sortedNums[sortedNums.length / 2]! + sortedNums[sortedNums.length / 2 - 1]!) / 2;
+}
+
+console.log(medianSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
