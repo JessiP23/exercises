@@ -40,3 +40,7 @@ let avg5 = next(6);
 let avg6 = next(4);
 
 console.log(avg1, avg2, avg3, avg4, avg5, avg6);
+
+
+// data stream
+// [0,0,0] -> [5,0,0] -> [5,1,0] -> [5,1,5]
