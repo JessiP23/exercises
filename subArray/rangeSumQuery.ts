@@ -3,7 +3,7 @@ class NumArray {
 
     constructor(nums: number[]) {
         // initialize prefixSums array with a size of nums.length + 1 and all elemeents set to 0
-        this.prefixSums = new Array(nums.length + 1).fill(0);
+        this.prefixSums = [0];
         for (let i = 0; i < nums.length; i++) {
             this.prefixSums[i+1] = this.prefixSums[i]! + nums[i]!;
         }
