@@ -5,7 +5,6 @@ function findMaxLength(nums: number[]) : number {
    const map = new Map();
    map.set(0, -1);
    let curr = 0, ans = 0;
-   const matchMap = new Map();
 
    for (let i = 0; i < nums.length; i++) {
     curr += nums[i] === 1 ? 1 : -1;
@@ -19,4 +18,4 @@ function findMaxLength(nums: number[]) : number {
    return ans;
 }
 
-console.log(findMaxLength([0,1,1,1,0,1,0,0,1]));
+console.log(findMaxLength([0,1,0,1,0,1,0,1,1,1]));
