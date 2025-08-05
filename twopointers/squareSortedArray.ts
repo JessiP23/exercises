@@ -6,11 +6,12 @@
 // output: [0,1,9,16,100]
 
 function sortedSquares(nums: number[]): number[] {
+    // need two pointers
     let left = 0;
     let right = nums.length - 1;
+    let output: number[] = new Array(nums.length)
+    // we start from the end of the array to the begining
     let i = nums.length - 1;
-    // this array stores the squared values in non-decreasing order (corrected order)
-    let output: number[] = new Array(nums.length);
 
     while (left <= right) {
         let value: number;
