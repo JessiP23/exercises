@@ -32,6 +32,9 @@ function characterReplacement(s: string, k: number): number {
     maxCharCount = 0;
 
     for (right = 0; right < s.length; right++) {
+        // this part of the code gets the unicode value of the current character
+        // A: 65, B: 66, C: 67, etc.
+        // we subtract the unicode value of 'A' to get the index of the character in the charCount array
         charCount[s.charCodeAt(right) - 'A'.charCodeAt(0)]!++;
         // update the most frequent character count
         maxCharCount = Math.max(maxCharCount, charCount[s.charCodeAt(right) - 'A'.charCodeAt(0)]!);
