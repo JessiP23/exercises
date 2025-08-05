@@ -1,13 +1,27 @@
 // 340. Longest Substring with At Most K Distinct Characters
-
-// In this problem, we are given a string s and an integer k. Our task is to find the length of the longest substring (which is a contiguous block of characters in the string) within s that contains at most k distinct characters.
-
-// A distinct character means that no matter how many times the character appears in the substring, it is counted only once. For example, if k = 2, the substring "aabbc" has 3 distinct characters ('a', 'b', and 'c'), thus, it does not meet the requirement.
-
-// The goal here is to achieve this while maximizing the length of the substring. A substring could range from containing a single character up to the length of the entire string, if k is sufficiently large to cover all distinct characters in the string s.
+// Given a string, find the length of the longest substring T that contains at most k distinct characters
 
 function longestSubstring(s: string, k: number): number {
     // contiguous
-    // k = 2 != "aabbc" (3 unique characters) => 2 != 3
-    // guarantee 1 character to max s.length
+    const count: Map<string, number> = new Map();
+    let left = 0;
+
+    for (const c of s) {
+        count.set(c, (count.get(c) ?? 0) + 1);
+
+        if (count.size > k) {
+            // decrease the count of the leftmost character
+            count.set(s[left]!, (count.get(s[left]!) ?? 0) - 1);
+            // if the count is 0, delete the character
+            if (count.get(s[left]!) === 0) {
+                count.delete(s[left]!);
+            }
+
+            left++;
+        }
+    }
+
+    return s.length - left;
 }
+
+console.log(longestSubstring("eceba", 2));
