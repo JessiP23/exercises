@@ -12,36 +12,25 @@
 // input: s="AABABBA", k=1
 // output: 4
 
-
-// lets do a counter for each letter's frequency within the sliding window
-const charCount: number[] = new Array(26).fill(0);
-
-// left inddex of the sliding window
 let left: number = 0;
-
-// right index of the sliding window
 let right: number = 0;
-
-// variable to keep track of the most frequent character within the window
+let charCount: number[] = new Array(26).fill(0);
 let maxCharCount: number = 0;
 
 function characterReplacement(s: string, k: number): number {
-    charCount.fill(0);
-    left = 0;
+    // initalize all variables for new sample
     right = 0;
+    left = 0;
+    charCount.fill(0);
     maxCharCount = 0;
-
+    
     for (right = 0; right < s.length; right++) {
-        // this part of the code gets the unicode value of the current character
-        // A: 65, B: 66, C: 67, etc.
-        // we subtract the unicode value of 'A' to get the index of the character in the charCount array
+        // analyze the fist value and ad it ot the array based on its  unicode value
         charCount[s.charCodeAt(right) - 'A'.charCodeAt(0)]!++;
-        // update the most frequent character count
-        maxCharCount = Math.max(maxCharCount, charCount[s.charCodeAt(right) - 'A'.charCodeAt(0)]!);
-
-        // check if the current window size minus the count of the max frequency character is greater than k. If so, shrink the window from the left
+        maxCharCount = Math.max(maxCharCount, charCount[s.charCodeAt(right)- 'A'.charCodeAt(0)]!)
+        // analyze like if there are more variables or space than k permitted
         if (right - left + 1 - maxCharCount > k) {
-            // decrement the count for the character that is existing the window
+            // in here i need to subtract the left character by 1
             charCount[s.charCodeAt(left) - 'A'.charCodeAt(0)]!--;
             left++;
         }
